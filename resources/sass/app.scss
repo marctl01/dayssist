@@ -6,3 +6,13 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+@import 'general.scss';
+
+
+.header{
+    background-color: #1AA9A8 !important;
+    .headerlink{
+        color: #EDE9E4 !important;
+    }
+}
