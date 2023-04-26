@@ -17,8 +17,12 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->dateTime('start_date');
             $table->dateTime('finish_date');
-            // $table->unsignedBigInteger('id_groups')->nullable();
             $table->timestamps();
+            
+            //Relacion con grupos
+            $table->unsignedBigInteger('group_id');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            
         });
     }
 
