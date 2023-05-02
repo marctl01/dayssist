@@ -10,8 +10,11 @@ class Event extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'start_date', 'finish_date'
-        // , 'id_group'
+        'title',
+        'description',
+        'start_date',
+        'finish_date',
+        'group_id',
     ];
 
     public function group()

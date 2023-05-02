@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Group;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Rol;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class UserFactory extends Factory
+class EventFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,12 +19,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-            'role_id' => function () { return Rol::inRandomOrder()->first()->id; },
+            'title' => $this->faker->sentence(3),
+            'description' => $this->faker->paragraph(),
+            'start_date' => $this->faker->dateTimeBetween('now', '+2 months'),
+            'finish_date' => $this->faker->dateTimeBetween('+2 months', '+4 months'),
+            'group_id' => Group::all()->random()->id
         ];
     }
 
