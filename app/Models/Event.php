@@ -15,6 +15,7 @@ class Event extends Model
         'start_date',
         'finish_date',
         'group_id',
+        'creator_id',
     ];
 
     public function group()

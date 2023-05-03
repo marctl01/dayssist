@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Group;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -23,7 +24,8 @@ class EventFactory extends Factory
             'description' => $this->faker->paragraph(),
             'start_date' => $this->faker->dateTimeBetween('now', '+2 months'),
             'finish_date' => $this->faker->dateTimeBetween('+2 months', '+4 months'),
-            'group_id' => Group::all()->random()->id
+            'group_id' => Group::all()->random()->id,
+            'creator_id' => function () { return User::inRandomOrder()->first()->id; },
         ];
     }
 

@@ -19,6 +19,9 @@ return new class extends Migration
             $table->dateTime('finish_date');
             $table->timestamps();
             
+            // Id del creador
+            $table->string('creator_id');
+
             //Relacion con grupos
             $table->unsignedBigInteger('group_id');
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
