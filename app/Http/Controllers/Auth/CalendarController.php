@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Helpers\Calendar;
+use App\Helpers\CalendarDate;
+use App\Helpers\CurrentDate;
 
 
 class CalendarController extends Controller
@@ -25,11 +28,11 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        return view('calendar');
-    }
+    
+        $calendar = new Calendar(new CurrentDate, new CalendarDate);
+        $calendar->create();
+        $calendar->setSundayFirst(false);
 
-    public function year()
-    {
-        return view('year');
+        return view('calendar', compact('calendar'));
     }
 }
