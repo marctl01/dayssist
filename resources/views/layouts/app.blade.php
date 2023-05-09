@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
         <link rel="icon" href="{{ asset('img/icons/logoblack.svg') }}" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="{{asset('js/svg-inject.min.js')}}"></script>
+        <script src="{{ asset('js/svg-inject.min.js') }}"></script>
         <script src="https://kit.fontawesome.com/de6c47bae5.js" crossorigin="anonymous"></script>
         @yield('extra-metas')
 
@@ -48,12 +48,10 @@
         <!-- End Cookie Consent -->
     </head>
     <body>
-        <script src="https://www.google.com/recaptcha/api.js?render={{ config('recaptcha.sitekey') }}"></script>
         @include('layouts.complements.header')
         @yield('content')
         @include('layouts.complements.footer')
 
-        <script src="{{ asset('js/app.js') }}"></script>
         @yield('scripts')
     </body>
 </html>
