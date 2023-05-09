@@ -2,9 +2,9 @@
 
 @section('content')
 <div  class="backgroundgimage">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div class="cardBody">
                     <div class="cardTitle">LOG IN</div>
                     <div class="card-body">
