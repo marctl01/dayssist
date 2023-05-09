@@ -10,7 +10,7 @@
                     <div class="row justify-content-center">
                         @foreach ($calendar->getMonthLabels() as $months)
                             <div class="box" style="border: 1px solid #0000">
-                                <a href="{{ route('calendar') }}">
+                                <a href="{{ route('calendar', ['month' => $months]) }}">
                                     <span>{{$months}}</span>
                                 </a>
                             </div>

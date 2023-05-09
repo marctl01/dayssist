@@ -12,7 +12,7 @@ class Calendar
     ];
 
     protected $monthLabels = [
-        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
         'Noviembre', 'Diciembre'
     ];
 
@@ -74,12 +74,21 @@ class Calendar
 
         return $day;
     }
-    
+
     public function isCurrentDate($dayNumber)
     {
         if ($this->calendarDate->getYear() === $this->currentDate->getYear() &&
         $this->calendarDate->getMonthNumber() === $this->currentDate->getMonthNumber() &&
         $this->currentDate->getCurrentDayNumber() === $dayNumber)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function isCurrentMonth($selectedMonth)
+    {
+        if ($this->calendarDate->getMonthName() === $selectedMonth)
         {
             return true;
         }

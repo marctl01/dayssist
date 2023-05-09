@@ -26,12 +26,15 @@ class CalendarController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function index($monthName)
     {
-    
         $calendar = new Calendar(new CurrentDate, new CalendarDate);
-        $calendar->create();
         $calendar->setSundayFirst(false);
+        $months = $calendar->getMonthLabels();
+        $monthNumber = array_search($monthName, $months) + 1;
+        $calendar->setMonth($monthNumber);
+        $calendar->create();
 
         return view('calendar', compact('calendar'));
     }

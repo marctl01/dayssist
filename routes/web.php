@@ -25,7 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/calendar', [App\Http\Controllers\Auth\CalendarController::class, 'index'])->name('calendar');
+    Route::get('/calendar/{month}', [App\Http\Controllers\Auth\CalendarController::class, 'index'])->name('calendar');
+
+
 });
 
 require __DIR__.'/auth.php';
