@@ -7,7 +7,7 @@
                         <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                     </a>
                 @else
-                <a class="navbar-brand" href="{{ url('/dashboard') }}">
+                <a class="navbar-brand" href="{{ url('/calendar') }}">
                     <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 </a>
                 @endguest
