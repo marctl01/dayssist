@@ -19,6 +19,12 @@ Route::get('/', function () { return view('welcome'); });
 
 Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:Admin'], function () {
+
+        Route::get('/', [App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin_dashboard');
+
+        Route::get('/adm_user', [App\Http\Controllers\Admin\UserController::class,'index'])->name('adm_user');
+        Route::get('/adm_event', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_event');
+
         Route::get('/calendar', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
         Route::get('/calendar/{month}', [App\Http\Controllers\Auth\CalendarController::class, 'index'])->name('calendar');
         Route::get('/calendar/{month}/{day}', [App\Http\Controllers\Auth\DayController::class, 'index'])->name('day');
