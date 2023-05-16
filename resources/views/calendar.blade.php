@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-space-between">
@@ -14,10 +15,26 @@
                     @foreach ($calendar->getWeeks() as $week)
                         <tr class="fw-medium">
                             @foreach ($week as $day)
-                                <td @if (!$day['currentMonth']) class="text-muted fw-light" @endif>
-                                    <span @if ($calendar->isCurrentDate($day['dayNumber'])) class="text-primary" @endif>
-                                        {{ $day['dayNumber'] }}
-                                    </span>
+                                <td @if ($calendar->isCurrentDate($day['dayNumber'])) class="tabla-current" @endif>
+                                    @if (!$day['currentMonth'])
+                                        <span class="text-muted">{{ $day['dayNumber'] }}</span>
+                                    @else
+                                    @php
+                                        $url = url()->current();
+                                        $url = explode('/', $url);
+
+                                        $month = last($url);
+                                    @endphp
+                                    <a href="{{ route('day', ['month' => $month, 'day' => $day['dayNumber']]) }}">
+                                        <button id="day-button" data-toggle="modal" data-target="#my-modal"
+                                            @if ($calendar->isCurrentDate($day['dayNumber'])) class="btn btn-primary-current" 
+                                                @else class="btn btn-outline-primary" 
+                                            @endif
+                                            >
+                                            {{ $day['dayNumber'] }}
+                                        </button>
+                                    </a>
+                                    @endif
                                 </td>
                             @endforeach
                         </tr>

@@ -2,9 +2,15 @@
     <div class="container-fluid">
         <div class="row linea">
             <div class="col-3">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                @guest
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    </a>
+                @else
+                <a class="navbar-brand" href="{{ url('/dashboard') }}">
                     <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 </a>
+                @endguest
             </div>
             <div class="col-9">
                 <div class="row justify-content-end">

@@ -231,6 +231,20 @@ body {
     margin: 0 auto; 
 }
 
+.btn-primary-current{
+    background: #1AA9A8;
+    color: #FFFFFF;
+}
+.btn-primary-current:hover{
+    background: #FFFFFF;
+    color: #1AA9A8;
+}
+
+.tabla-current{
+    background: #1AA9A8;
+    color: #FFFFFF;
+}
+
 .box {
 	width: 25%;
 	height: 200px;
