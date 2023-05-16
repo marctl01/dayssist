@@ -3,12 +3,9 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-space-between">
-        @include('layouts.complements.sidebar')
+        @include('layouts.complements.admin.sidebar')
         <div class="container mt-4">
-            <h1>Dashboard Admin</h1>
-
-            <a href="{{ route('adm_user') }}">Administrar usuario</a>
-            <a href="{{ route('adm_event') }}">Administrar eventos</a>
+            <h1>Welcome Admin</h1>
         </div>
     </div>
 </div>

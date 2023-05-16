@@ -22,12 +22,10 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin_dashboard');
 
-        Route::get('/adm_user', [App\Http\Controllers\Admin\UserController::class,'index'])->name('adm_user');
-        Route::get('/adm_event', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_event');
+        Route::get('/adm_users', [App\Http\Controllers\Admin\UserController::class,'index'])->name('adm_users');
+        Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
 
-        Route::get('/calendar', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/calendar/{month}', [App\Http\Controllers\Auth\CalendarController::class, 'index'])->name('calendar');
-        Route::get('/calendar/{month}/{day}', [App\Http\Controllers\Auth\DayController::class, 'index'])->name('day');
+        
     });
 
     Route::get('/calendar', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
