@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use Hamcrest\Core\Set;
+
 trait DateHelpers
 {
     public function getMonthNumberDays()

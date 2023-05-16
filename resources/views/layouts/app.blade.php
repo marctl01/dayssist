@@ -8,14 +8,15 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+        <link href="{{ asset('js/main.js') }}">
         <link rel="icon" href="{{ asset('img/icons/logoblack.svg') }}" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="{{ asset('js/svg-inject.min.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://kit.fontawesome.com/de6c47bae5.js" crossorigin="anonymous"></script>
         @yield('extra-metas')
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <!-- Cookie Consent by https://www.FreePrivacyPolicy.com -->
-        <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/3.1.0/cookie-consent.js"></script>
+        <!-- <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/3.1.0/cookie-consent.js"></script>
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
                 cookieconsent.run({
@@ -44,7 +45,7 @@
             });
             console.log('targeting fired');
             });
-        </script>
+        </script> -->
         <!-- End Cookie Consent -->
     </head>
     <body>
