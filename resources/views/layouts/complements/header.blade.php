@@ -7,9 +7,18 @@
                         <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                     </a>
                 @else
-                <a class="navbar-brand" href="{{ url('/calendar') }}">
-                    <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                </a>
+                @if(auth()->user()->role->name == 'Admin')
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    </a>
+                @else
+                    <a class="navbar-brand" href="{{ url('/calendar') }}">
+                        <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    </a>
+                @endif
+                    <!-- <a class="navbar-brand" href="{{ url('/calendar') }}">
+                        <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    </a> -->
                 @endguest
             </div>
             <div class="col-9">
