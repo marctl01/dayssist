@@ -19,7 +19,6 @@ Route::get('/', function () { return view('welcome'); });
 
 Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'role:Admin'], function () {
-        Route::get('/', );
         Route::get('/calendar', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
         Route::get('/calendar/{month}', [App\Http\Controllers\Auth\CalendarController::class, 'index'])->name('calendar');
         Route::get('/calendar/{month}/{day}', [App\Http\Controllers\Auth\DayController::class, 'index'])->name('day');
