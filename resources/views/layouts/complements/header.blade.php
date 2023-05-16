@@ -8,7 +8,7 @@
                     </a>
                 @else
                 @if(auth()->user()->role->name == 'Admin')
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/dashboard') }}">
                         <img src="{{ asset('img/icons/logo.svg') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                     </a>
                 @else
