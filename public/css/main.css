@@ -1,0 +1,27 @@
+.sidebar{
+    height: auto !important;
+}
+.footerlink{
+    color: #EDE9E4;
+    text-decoration: none;
+}
+.footerlink:hover{
+    color: #000000 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+.center{
+    text-align: center;
+}
+svg.w-5.h-5{
+    display: none;
+}
+span.relative.z-0.inline-flex.shadow-sm.rounded-md{
+    display: none;
+}
+.paginator{
+    margin-top: 20px;
+}
+.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between{
+    margin-top: 10px;
+}

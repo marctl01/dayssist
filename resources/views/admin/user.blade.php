@@ -5,8 +5,7 @@
     <div class="row justify-content-space-between">
         @include('layouts.complements.admin.users.sidebar')
         <div class="container mt-4">
-            <style></style>
-            <h1>User Admin</h1>
+            <h1>Usuario Admin</h1>
             <table>
                 <thead>
                     <tr>
@@ -26,20 +25,17 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role->name }}</td>
-                        <td>{{ $user->groups->first()->name }}</td>
-                        <td>{{ $user->groups->first()->id }}</td>
+                        <td class="center">{{ $user->groups->first()->name }}</td>
+                        <td class="center">{{ $user->groups->first()->id }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-
-            <!-- Mostrar los registros -->
-
-
-<!-- Mostrar los enlaces de paginación -->
-    {{ $users->links() }}
-
+            <div class="paginator">
+                {{ $users->links() }}
+            </div>
         </div>
+        
     </div>
 </div>
 @endsection

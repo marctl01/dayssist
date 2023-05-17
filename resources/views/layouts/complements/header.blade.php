@@ -31,19 +31,17 @@
                             <a class="nav-link headerlink" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
-                    <ul class="routes-list ms-auto" style="list-style:none;">
-                        <li class="nav-item dropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                    <div class="routes-list ms-auto">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                        </li>
-                    </ul>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
                     @endguest
                 </div>
             </div>
