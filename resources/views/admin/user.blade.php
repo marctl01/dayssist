@@ -37,9 +37,6 @@
                                 <option value="1" @if($user->role->id == 1) selected @endif>Admin</option>
                                 <option value="2" @if($user->role->id == 2) selected @endif>Cliente</option>
                             </select>
-                            
-                            
-                            <!-- <input type="text" value="{{ $user->role->name }}" > -->
                         </td>
                         <td class="center">
                             @if(isset($user->groups->first()->name)) <input type="text" value="{{ $user->groups->first()->name }}" > 
@@ -60,7 +57,6 @@
                 {{ $users->links() }}
             </div>
         </div>
-        
     </div>
 </div>
 @endsection

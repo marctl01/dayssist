@@ -74,10 +74,12 @@ class UserController extends Controller
         ]);
 
         $user->remember_token = Str::random(10);
-        $user->save();
 
-        return redirect()->back()->with('success', 'Datos guardados correctamente');
-
+        if ($user->save()) {
+            return redirect()->back()->with('success', 'Usuario creado exitosamente.');
+        } else {
+            return redirect()->back()->with('error', 'Error al crear el usuario.');
+        }
     }
 
     protected function delete(Request $request)
