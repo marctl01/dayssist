@@ -15,9 +15,6 @@ class EventController extends Controller
      */
     public function index()
     {
-        //DEVOLVER VIEW DE DAY
-        // $events = Event::all();
-        // return view('user.useraction', compact('events'));
         return view('day');
     }
 
@@ -49,13 +46,16 @@ class EventController extends Controller
             'Diciembre' => 'December',
         ];
 
-        // Convertir el nombre del mes a inglés utilizando el mapeo
-        $englishMonth = $monthMappings[$month];
+        $month = $monthMappings[$month];
+        $day = $day;
 
-        $monthNumber = Carbon::parse($englishMonth)->month;
+        $events = DB::table('events')
+            ->whereMonth('start_date', '=', Carbon::parse($month)->month)
+            ->whereDay('start_date', '=', $day)
+            ->get();
 
+        dd($events);
 
-        return view('day', compact('events', 'month', 'day'));
     }
 
     /**
@@ -63,7 +63,6 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //OJO MEJORAR EL VALIDATE, SOLO SALTA ERROR SI DATE ESTA MAL (mal formato de date en bbdd)
         $request->validate([
             'title' => 'required',
             'start_date' => 'required|date',
@@ -76,7 +75,6 @@ class EventController extends Controller
 
         return redirect()->back()->with('success', 'Datos guardados correctamente');
 
-        // return redirect()->route('event.showall')->with('success', 'Event created successfully.');
     }
 
     /**
@@ -109,7 +107,6 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $event->update($request->all());
 
-        // return redirect()->route('playground')->with('success', 'Event updated successfully.');
         return redirect()->back()->with('success', 'Event updated successfully');
     }
 
@@ -121,7 +118,6 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $event->delete();
 
-        // return redirect()->route('playground')->with('success', 'Event deleted successfully.');
         return redirect()->back()->with('success', 'Event deleted successfully');
     }
 }
