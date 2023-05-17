@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-space-between">
-        @include('layouts.complements.sidebar')
+        @include('layouts.complements.event.sidebar')
         <div class="container-day">
             <h1 class="text-center">Día: {{ $day }}</h1>
         </div> 
