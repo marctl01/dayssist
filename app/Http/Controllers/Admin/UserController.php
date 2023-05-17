@@ -21,11 +21,25 @@ class UserController extends Controller
 
     public function index_searcher(Request $request)
     {
-        $searchTerm = $request->input('search');
+        $nombreABuscar = $request->input('search');
         
-        $users = User::where('name', 'like', "%$searchTerm%")
+        $users = User::where('name', 'like', "%$nombreABuscar%")
                 ->paginate(20);
         return view('admin.user' , compact('users'));
+    }
+
+    public function update()
+    {
+        return view('admin.User.update');
+    }
+
+    public function update_searcher(Request $request)
+    {
+        $nombreABuscar = $request->input('search');
+        
+        $users = User::where('name', 'like', "%$nombreABuscar%")
+                ->paginate(20);
+        return view('admin.User.update' , compact('users'));
     }
 
     public function view_form_create()
@@ -68,7 +82,6 @@ class UserController extends Controller
 
     protected function delete(Request $request)
     {
-        // var_dump($request->input->id);die();
         $user = User::find($request->input('id'));
 
         if (!$user) {
