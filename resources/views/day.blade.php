@@ -6,13 +6,18 @@
         @include('layouts.complements.event.sidebar')
         <div class="container-day">
             <h1 class="text-center">Día: {{ $day }}</h1>
-        </div> 
+        </div>
+        @foreach ($events as $event)
+
         <div class="container-drag">
             <div class="draggable-container" draggable="true">
                 <input type="checkbox" class="checkbox">
-                <label class="label">Contenedor 1</label>
+                <label class="label">{{ $event->title }}</label>
             </div>
         </div>
+        @endforeach
+
+
     </div>
 </div>
 <script>
