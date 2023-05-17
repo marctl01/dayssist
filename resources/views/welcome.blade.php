@@ -23,7 +23,7 @@
                     Cumple con tus fechas límite y las de tu circulo cercano gracias 
                     a nuestro calendario compartido
                 </p>
-                <a href="{{ route('login') }}" class="btn btn-normal">Mas sobre nosotros</a>
+                <a href="{{ route('contact') }}" class="btn btn-normal">Mas sobre nosotros</a>
             </div>
             <div class="col-6 aligncenter alignright">
                 <img src="{{ asset('img/first-image.png') }}" alt="illustration" class="illustration">
@@ -43,7 +43,7 @@
                 Aquí trata sobre algo más que organización. 
                 Lee artículos sobre productividad, colaboración, etc.
                 </p>
-                <a href="{{ route('login') }}" class="btn btn-normal">Aprende</a>
+                <a href="{{ route('contact') }}" class="btn btn-normal">Aprende</a>
             </div>
         </div>
     </div>

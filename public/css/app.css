@@ -17,6 +17,9 @@ body{
 .header{
     background-color: #1AA9A8;
 }
+a.dropdown-button {
+    color: #EDE9E4 !important;
+}
 .backgroundgimage{
     background-image: url(../img/loginbkg.jpeg);
     background-size: cover;
@@ -26,11 +29,12 @@ body{
 }
 .headerlink{
     color: #EDE9E4;
-    text-decoration: none;
+    text-decoration: none ;
 }
 .headerlink:hover{
-    color: #a8a5a1;
-    cursor: pointer;
+    color: #000000 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
 }
 .linea{
     padding: 20px;
@@ -72,6 +76,15 @@ h1.title{
     color: #EDE9E4;
     padding: 20px;
     text-align: center;
+}
+.footerlink{
+    color: #EDE9E4;
+    text-decoration: none;
+}
+a.footerlink:hover{
+    color: #000000 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
 }
 .link_list{
     list-style-type: none;
@@ -276,6 +289,7 @@ body {
     align-items: flex-start;
     background-color:rgba(201, 195, 188, 0.5);
     width: 20%;
+    height: 500px;
 }
 
 .sidebar-link{

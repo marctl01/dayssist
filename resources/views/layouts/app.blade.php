@@ -7,7 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+        <link rel="stylesheet" href="../css/app.css" />
+        <link rel="stylesheet" href="{{ asset('/css/main.css') }}" />
         <link href="{{ asset('js/main.js') }}">
         <link rel="icon" href="{{ asset('img/icons/logoblack.svg') }}" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

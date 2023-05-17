@@ -5,7 +5,7 @@
     <div class="row justify-content-space-between">
         @include('layouts.complements.admin.sidebar')
         <div class="container mt-4">
-            <h1>Welcome Admin</h1>
+            <h1>Tablero de Administración</h1>
         </div>
     </div>
 </div>

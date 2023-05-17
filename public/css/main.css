@@ -1,0 +1,74 @@
+.sidebar{
+    height: auto !important;
+}
+.footerlink{
+    color: #EDE9E4;
+    text-decoration: none;
+}
+.footerlink:hover{
+    color: #000000 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+.center{
+    text-align: center;
+}
+svg.w-5.h-5{
+    display: none;
+}
+span.relative.z-0.inline-flex.shadow-sm.rounded-md{
+    display: none;
+}
+.paginator{
+    margin-top: 20px;
+}
+.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between{
+    margin-top: 10px;
+}
+.buscador{
+    padding-left: 20px;
+}
+.create-form{
+    margin-top: 70px;
+    margin-bottom: 90px;
+}
+/* The alert message box */
+.alert-succes {
+    padding: 20px;
+    background-color: #1AA9A8; /* Red */
+    color: white;
+    margin-bottom: 15px;
+    }
+.alert-error {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+.error{
+    color: red;
+}
+
+.id {
+    width: 35px;
+}
+input.id {
+    width: 35px;
+}
