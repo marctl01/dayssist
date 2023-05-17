@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/adm_users/delete', [App\Http\Controllers\Admin\UserController::class,'view_form_delete'])->name('adm_users.deleteform');
         Route::delete('/adm_users/delete', [App\Http\Controllers\Admin\UserController::class,'delete'])->name('adm_users.delete');
 
+        
+
 
 
         Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');

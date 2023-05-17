@@ -17,19 +17,19 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th class="id">Id</th>
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Rol</th>
                         <th>Grupo</th>
-                        <th>Grupo ID</th>
-                        <th>Grupo ID</th>
+                        <th class="id">Grupo ID</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach ($users as $user)
                     <tr>
-                        <td> <input type="text" value="{{ $user->id }}" disabled></td>
+                        <td> <input type="text" value="{{ $user->id }}" class="id" disabled></td>
                         <td> <input type="text" value="{{ $user->name }}" ></td>
                         <td> <input type="text" value="{{ $user->email }}" ></td>
                         <td>                 
@@ -43,12 +43,16 @@
                             @else <input type="text" value="0" placeholder="Sin grupo">
                             @endif
                         </td>
-                        <td class="center">
+                        <td class="center id">
                             @if(isset($user->groups->first()->id)) <input type="text" value="{{ $user->groups->first()->id }}" > 
                             @else <input type="text" value="0" placeholder="Sin grupo">
                             @endif
                         </td>
-                        <td> <input type="button" value="Actualizar"></td>
+                        <td class="center">
+                            <a href="#">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
