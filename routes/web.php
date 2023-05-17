@@ -22,8 +22,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin_dashboard');
 
-        Route::get('/adm_users', [App\Http\Controllers\Admin\UserController::class,'index'])->name('adm_users');
         Route::get('/adm_users', [App\Http\Controllers\Admin\UserController::class,'index_searcher'])->name('adm_users.search');
+        Route::post('/adm_users/update', [App\Http\Controllers\Admin\UserController::class,'update'])->name('adm_users.update');
 
         Route::get('/adm_users/create', [App\Http\Controllers\Admin\UserController::class,'view_form_create'])->name('adm_users.createform');
         Route::post('/adm_users/create', [App\Http\Controllers\Admin\UserController::class,'create'])->name('adm_users.create');

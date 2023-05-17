@@ -394,3 +394,10 @@ body {
     padding: 10px;
     font-size: 20px;
 }
+
+.fa-edit{
+    color: black;
+}
+.btn-dayssist{
+    background-color: #1AA9A8;
+}

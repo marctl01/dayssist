@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Rol;
+use App\Models\Group;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
@@ -15,22 +16,43 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::paginate(20);
-        return view('admin.user' , compact('users'));
+        // $users = User::paginate(20);
+        // return view('admin.user' , compact('users'));
     }
 
     public function index_searcher(Request $request)
     {
         $nombreABuscar = $request->input('search');
+        $groups = Group::all();
+        
         
         $users = User::where('name', 'like', "%$nombreABuscar%")
                 ->paginate(20);
-        return view('admin.user' , compact('users'));
+        return view('admin.user' , compact('users','groups'));
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        return view('admin.User.update');
+        $id = $request->input('id');
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $rol_id = $request->input('rol_id');
+        $grupo_id = $request->input('group_id');
+
+        $user = User::findOrFail($id);
+
+        $user->name = $name;
+        $user->email = $email;
+        $user->role_id = $rol_id;
+        
+        if($grupo_id != 0 ) $user->groups()->sync([$grupo_id]);
+        else $user->groups = $grupo_id;
+
+        if ($user->save()) {
+            return ['success', 'Usuario creado exitosamente.'];
+        } else {
+            return ['error', 'Error al crear el usuario.'];
+        }
     }
 
     public function update_searcher(Request $request)

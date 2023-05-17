@@ -21,44 +21,92 @@
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Rol</th>
-                        <th>Grupo</th>
-                        <th class="id">Grupo ID</th>
+                        <th class="id">Grupo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach ($users as $user)
                     <tr>
-                        <td> <input type="text" value="{{ $user->id }}" class="id" disabled></td>
-                        <td> <input type="text" value="{{ $user->name }}" ></td>
-                        <td> <input type="text" value="{{ $user->email }}" ></td>
+                        <td> <input type="text" value="{{ $user->id }}" class="id center" disabled></td>
+                        <td> <input type="text" value="{{ $user->name }}" class="center" ></td>
+                        <td> <input type="text" value="{{ $user->email }}" class="center" ></td>
                         <td>                 
                             <select name="rol_id"> 
                                 <option value="1" @if($user->role->id == 1) selected @endif>Admin</option>
                                 <option value="2" @if($user->role->id == 2) selected @endif>Cliente</option>
                             </select>
                         </td>
-                        <td class="center">
-                            @if(isset($user->groups->first()->name)) <input type="text" value="{{ $user->groups->first()->name }}" > 
-                            @else <input type="text" value="0" placeholder="Sin grupo">
-                            @endif
-                        </td>
+                        
                         <td class="center id">
-                            @if(isset($user->groups->first()->id)) <input type="text" value="{{ $user->groups->first()->id }}" > 
-                            @else <input type="text" value="0" placeholder="Sin grupo">
-                            @endif
+                            <select name="group_id">
+                                <option value="0" @if ($user->groups->isEmpty()) selected @endif>Sin grupo</option>
+                                @foreach ($groups as $group)
+                                    <option value="{{ $group->id }}" @if ($user->groups->contains('id', $group->id)) selected @endif>{{ $group->name }}</option>
+                                @endforeach
+                            </select>
+                            
+                            {{-- @if(isset($user->groups->first()->id)) <input type="number" value="{{ $user->groups->first()->id }}" class="center" > 
+                            @else <input type="number" value="0" placeholder="Sin grupo" class="center">
+                            @endif --}}
                         </td>
                         <td class="center">
-                            <a href="#">
+                            <button onclick="update(this.parentNode.parentNode)" class="btn-dayssist">
                                 <i class="fas fa-edit"></i>
-                            </a>
+                            </button>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            <meta name="csrf-token" content="{{ csrf_token() }}">
+            <script>
+                function update(d) {
+                    let td = d.getElementsByTagName("td");
+
+                    var id = td[0].children[0].value;
+                    var name = td[1].children[0].value;
+                    var email = td[2].children[0].value;
+                    var rol = td[3].children[0].value;
+                    var group = td[4].children[0].value;
+
+                    console.log(id);
+                    console.log(name);
+                    console.log(email);
+                    console.log(rol);
+                    console.log(group);
+
+                    // Obtén los datos del formulario en un objeto formData
+                    var formData = new FormData();
+                    formData.append('id', id);
+                    formData.append('name', name);
+                    formData.append('email', email);
+                    formData.append('rol_id', rol);
+                    formData.append('group_id', group);
+
+                    var formDataObject = Object.fromEntries(formData);
+                    var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+
+                    // Realiza la solicitud AJAX
+                    $.ajax({
+                    url: '/adm_users/update',
+                    type: 'POST',
+                    data: formDataObject,
+                    headers: {
+                        'X-CSRF-TOKEN': token
+                    },
+                    success: function(response) {
+                        // Maneja la respuesta exitosa del servidor
+                        console.log(response);
+                    }
+                    });
+                    
+                }
+            </script>
             <div class="paginator">
-                {{ $users->links() }}
+                {{ $users->appends(request()->query())->links() }}
+
             </div>
         </div>
     </div>
