@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -49,13 +50,16 @@ class EventController extends Controller
             'Diciembre' => 'December',
         ];
 
-        // Convertir el nombre del mes a inglés utilizando el mapeo
-        $englishMonth = $monthMappings[$month];
+        $monthNum = $monthMappings[$month];
+        $day = $day;
 
-        $monthNumber = Carbon::parse($englishMonth)->month;
-
+        $events = DB::table('events')
+            ->whereMonth('start_date', '=', Carbon::parse($monthNum)->month)
+            ->whereDay('start_date', '=', $day)
+            ->get();
 
         return view('day', compact('events', 'month', 'day'));
+
     }
 
     /**
