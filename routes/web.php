@@ -49,25 +49,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/calendar/{month}', [App\Http\Controllers\Auth\CalendarController::class, 'index'])->name('calendar');
     Route::get('/calendar/{month}/{day}', [App\Http\Controllers\Auth\DayController::class, 'index'])->name('day');
 
-    Route::get('/events', [App\Http\Controllers\EventController::class, 'showall'])->name('events');
+    // Route::get('/calendar/{month}/{day}', [App\Http\Controllers\EventController::class, 'showall'])->name('day');
+    Route::get('/calendar/{month}/{day}', [App\Http\Controllers\EventController::class, 'showDayEvent'])->name('day');
     Route::get('/events/create', [App\Http\Controllers\EventController::class, 'create_form'])->name('events.create_form');
     Route::post('/events/create', [App\Http\Controllers\EventController::class, 'store'])->name('events.create');
     Route::get('/events/update', [App\Http\Controllers\EventController::class, 'update_form'])->name('events.update_form');
     Route::patch('/events/update', [App\Http\Controllers\EventController::class, 'update'])->name('events.update');
-    Route::get('/events/delete', [App\Http\Controllers\EventController::class, 'delete_form'])->name('events.delete_form');
-    Route::delete('/events/delete', [App\Http\Controllers\EventController::class, 'delete'])->name('events.delete');
-
-    // Route::get('/events/showall', [App\Http\Controllers\Admin\EventController::class,'index'])->name('events');
-    // Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
-    // Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
-    // Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
-    // Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
-
-    // Route::get('/events', [EventController::class, 'index']);
-    // Route::post('/events', [EventController::class, 'store']);
-    // Route::get('/events/{id}', [EventController::class, 'show']);
-    // Route::put('/events/{id}', [EventController::class, 'update']);
-    // Route::delete('/events/{id}', [EventController::class, 'destroy']);
+    // Route::get('/events/delete', [App\Http\Controllers\EventController::class, 'delete_form'])->name('events.delete_form');
+    // Route::delete('/events/delete', [App\Http\Controllers\EventController::class, 'delete'])->name('events.delete');
 
 });
 

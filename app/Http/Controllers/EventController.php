@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 
 class EventController extends Controller
 {
@@ -27,6 +30,32 @@ class EventController extends Controller
     {
         $events = Event::paginate(10);
         return view('event.showall', compact('events'));
+    }
+
+    public function showDayEvent($month, $day)
+    {
+        $monthMappings = [
+            'Enero' => 'January',
+            'Febrero' => 'February',
+            'Marzo' => 'March',
+            'Abril' => 'April',
+            'Mayo' => 'May',
+            'Junio' => 'June',
+            'Julio' => 'July',
+            'Agosto' => 'August',
+            'Septiembre' => 'September',
+            'Octubre' => 'October',
+            'Noviembre' => 'November',
+            'Diciembre' => 'December',
+        ];
+
+        // Convertir el nombre del mes a inglés utilizando el mapeo
+        $englishMonth = $monthMappings[$month];
+
+        $monthNumber = Carbon::parse($englishMonth)->month;
+
+
+        return view('day', compact('events', 'month', 'day'));
     }
 
     /**
