@@ -31,7 +31,11 @@
                 <input type="text" id="password_confirmation" name="password_confirmation" required/>
 
                 <label for="rol_id">Rol:</label>
-                <input type="text" id="rol_id" name="rol_id"/>
+                <select id="rol_id" name="rol_id">
+                    <option value="1">Admin</option>
+                    <option value="2">Cliente</option>
+                </select>
+
 
                 <input type="submit" value="Send"/>
             </form>

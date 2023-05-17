@@ -19,6 +19,15 @@ class UserController extends Controller
         return view('admin.user' , compact('users'));
     }
 
+    public function index_searcher(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        
+        $users = User::where('name', 'like', "%$searchTerm%")
+                ->paginate(20);
+        return view('admin.user' , compact('users'));
+    }
+
     public function view_form_create()
     {
         return view('admin.User.create');

@@ -7,6 +7,11 @@
         <div class="container mt-4">
             <style></style>
             <h1>User Admin</h1>
+
+            <form action="{{ route('adm_users.search') }}" method="GET">
+                <input type="text" name="search" placeholder="Nombre del usuario">
+                <button type="submit">Buscar</button>
+            </form>
             <table>
                 <thead>
                     <tr>
@@ -26,8 +31,16 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role->name }}</td>
-                        <td>{{ $user->groups->first()->name }}</td>
-                        <td>{{ $user->groups->first()->id }}</td>
+                        <td>
+                            @if(isset($user->groups->first()->name)) {{ $user->groups->first()->id }} 
+                            @else Sin grupo.
+                            @endif
+                        </td>
+                        <td>
+                            @if(isset($user->groups->first()->id)) {{ $user->groups->first()->id }} 
+                            @else Sin grupo.
+                            @endif
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
