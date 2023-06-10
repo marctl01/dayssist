@@ -31,10 +31,20 @@ Route::middleware('auth')->group(function () {
         Route::get('/adm_users/delete', [App\Http\Controllers\Admin\UserController::class,'view_form_delete'])->name('adm_users.deleteform');
         Route::delete('/adm_users/delete', [App\Http\Controllers\Admin\UserController::class,'delete'])->name('adm_users.delete');
 
+<<<<<<< HEAD
         Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
 
 
         
+=======
+
+
+
+
+        Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
+
+
+>>>>>>> 260b5f590f1b9b2d757b232a8ef4b75c766ccbcd
     });
 
     
@@ -67,14 +77,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/calendar/{month}', [App\Http\Controllers\Auth\CalendarController::class, 'index'])->name('calendar');
     Route::get('/calendar/{month}/{day}', [App\Http\Controllers\Auth\DayController::class, 'index'])->name('day');
 
-    // Route::get('/calendar/{month}/{day}', [App\Http\Controllers\EventController::class, 'showall'])->name('day');
     Route::get('/calendar/{month}/{day}', [App\Http\Controllers\EventController::class, 'showDayEvent'])->name('day');
     Route::get('/events/create', [App\Http\Controllers\EventController::class, 'create_form'])->name('events.create_form');
     Route::post('/events/create', [App\Http\Controllers\EventController::class, 'store'])->name('events.create');
     Route::get('/events/update', [App\Http\Controllers\EventController::class, 'update_form'])->name('events.update_form');
     Route::patch('/events/update', [App\Http\Controllers\EventController::class, 'update'])->name('events.update');
-    // Route::get('/events/delete', [App\Http\Controllers\EventController::class, 'delete_form'])->name('events.delete_form');
-    // Route::delete('/events/delete', [App\Http\Controllers\EventController::class, 'delete'])->name('events.delete');
 
 });
 

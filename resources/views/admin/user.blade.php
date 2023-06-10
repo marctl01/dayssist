@@ -38,6 +38,7 @@
                                 <option value="3" @if($user->role->id == 3) selected @endif>Miembro</option>
                             </select>
                         </td>
+<<<<<<< Updated upstream
                         
                         <td class="center id">
                             <select name="group_id">
@@ -53,6 +54,20 @@
                         </td>
                         <td class="center">
                             <button onclick="update(this.parentNode.parentNode)" class="btn-dayssist">
+=======
+                        <td class="center">
+                            @if(isset($user->groups->first()->name)) <input type="text" value="{{ $user->groups->first()->name }}" class="center" > 
+                            @else <input type="text" value="0" placeholder="Sin grupo" class="center">
+                            @endif
+                        </td>
+                        <td class="center id">
+                            @if(isset($user->groups->first()->id)) <input type="text" value="{{ $user->groups->first()->id }}" class="center" > 
+                            @else <input type="text" value="0" placeholder="Sin grupo" class="center">
+                            @endif
+                        </td>
+                        <td class="center">
+                            <button onclick="" class="btn-dayssist">
+>>>>>>> Stashed changes
                                 <i class="fas fa-edit"></i>
                             </button>
                         </td>
@@ -60,6 +75,7 @@
                     @endforeach
                 </tbody>
             </table>
+<<<<<<< Updated upstream
             <meta name="csrf-token" content="{{ csrf_token() }}">
             <script>
                 function update(d) {
@@ -102,6 +118,11 @@
                         console.log(response);
                     }
                     });
+=======
+            <script>
+                function update(data) {
+                    
+>>>>>>> Stashed changes
                     
                 }
             </script>
