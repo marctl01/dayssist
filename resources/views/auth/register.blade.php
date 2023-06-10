@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div  class="backgroundgimage">
+<div class="backgroundgimage">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -56,6 +56,23 @@
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control inputform" name="password_confirmation" required autocomplete="new-password">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="rol" class="col-md-4 col-form-label text-md-end labeltext">{{ __('Rol') }}</label>
+
+                                <div class="col-md-6">
+                                    <select id="rol" class="form-control @error('rol') is-invalid @enderror inputform" name="rol" required>
+                                        <option value="Coordinador">Coordinador</option>
+                                        <option value="Miembro">Miembro</option>
+                                    </select>
+
+                                    @error('rol')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 

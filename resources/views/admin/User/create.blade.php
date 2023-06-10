@@ -9,10 +9,10 @@
                 <h1>Usuario Admin</h1>
            <div>
             @if(session('success'))
-                @include('views.admin.complements.success')
+                @include('admin.complements.success')
             @endif
             @if(session('error'))
-                @include('views.admin.complements.error')
+                @include('admin.complements.error')
             @endif
                 <form action="{{ route('adm_users.create')}}" method="POST" class="create-form" onsubmit="return validateForm()"> 
                     @csrf
@@ -47,8 +47,9 @@
                     <div class="form-group">
                         <label for="rol_id">Rol:</label>
                         <select id="rol_id" name="rol_id">
-                            <option value="1">Admin</option>
-                            <option value="2">Cliente</option>
+                            <option value="1" >Admin</option>
+                            <option value="2" >Coordinador</option>
+                            <option value="3" >Miembro</option>
                         </select>
                     </div>
                     <input type="submit" value="Send" class="btn btn-send"/>

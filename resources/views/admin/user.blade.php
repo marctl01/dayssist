@@ -34,7 +34,8 @@
                         <td>                 
                             <select name="rol_id"> 
                                 <option value="1" @if($user->role->id == 1) selected @endif>Admin</option>
-                                <option value="2" @if($user->role->id == 2) selected @endif>Cliente</option>
+                                <option value="2" @if($user->role->id == 2) selected @endif>Coordinador</option>
+                                <option value="3" @if($user->role->id == 3) selected @endif>Miembro</option>
                             </select>
                         </td>
                         
