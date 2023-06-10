@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -19,6 +20,7 @@ class GroupFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->word,
+            'password' => Hash::make('1234'),
         ];
     }
 

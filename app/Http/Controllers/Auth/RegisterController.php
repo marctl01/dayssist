@@ -72,7 +72,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'remember_token' => Str::random(10),
-            'role_id' => Rol::where('name', 'client')->first()->id,
+            // 'role_id' => Rol::where('name', 'client')->first()->id,
+            'role_id' => Rol::where('name', $data['rol'])->first()->id,
         ]);
 
         $user->remember_token = Str::random(10);

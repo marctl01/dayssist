@@ -31,14 +31,32 @@ Route::middleware('auth')->group(function () {
         Route::get('/adm_users/delete', [App\Http\Controllers\Admin\UserController::class,'view_form_delete'])->name('adm_users.deleteform');
         Route::delete('/adm_users/delete', [App\Http\Controllers\Admin\UserController::class,'delete'])->name('adm_users.delete');
 
-        
-
-
-
         Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
+
 
         
     });
+
+    
+    Route::group(['middleware' => 'role:Coordinador'], function () {
+
+        Route::get('/groups_coord', [App\Http\Controllers\Coordinador\GroupController::class,'index'])->name('groups_coord');
+        Route::post('/groups_coord/add_group', [App\Http\Controllers\Coordinador\GroupController::class,'add_group'])->name('groups_coord.add_group');
+        Route::post('/groups_coord/create_group', [App\Http\Controllers\Coordinador\GroupController::class,'create_group'])->name('groups_coord.create_group');
+        Route::delete('/groups_coord/delete', [App\Http\Controllers\Coordinador\GroupController::class,'delete'])->name('groups_coord.delete');
+    
+    });
+
+
+    Route::group(['middleware' => 'role:Miembro'], function () {
+
+        Route::get('/groups_miembro', [App\Http\Controllers\Miembro\GroupController::class,'index'])->name('groups_miemb');
+        Route::post('/groups_miembro/add_group', [App\Http\Controllers\Miembro\GroupController::class,'add_group'])->name('groups_miemb.add_group');
+        Route::delete('/groups_miembro/delete', [App\Http\Controllers\Miembro\GroupController::class,'delete'])->name('groups_miemb.delete');
+        
+    
+    });
+
 
     Route::get('/calendar', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
