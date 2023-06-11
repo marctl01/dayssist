@@ -2,91 +2,94 @@
 @section('content')
 
 <style>
-#datepicker {
-    width: 200px;
-    padding: 10px;
-    font-size: 16px;
-}
-
-#datepicker-button {
-    margin-left: 10px;
-    padding: 8px 12px;
-    font-size: 14px;
-}
-
 .container {
-display: flex;
-justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
-.draggable-container {
-    width: 200px;
-    height: 150px;
+.card {
+    width: min-content;
+    height: min-content;
     border: 1px solid #ccc;
     padding: 10px;
     background-color: #f0f0f0;
     cursor: move;
-}
-
-.checkbox {
-    width: 50px;
-    height: 50px;
     margin-bottom: 10px;
 }
 
-.label {
-    font-size: 16px;
+.card form {
+    display: inline;
+    margin-bottom: 0;
+}
+
+.card form button {
+    margin-top: 5px;
+}
+
+.card input[type="text"],
+.card input[type="date"],
+.card input[type="submit"] {
+    margin-bottom: 5px;
+}
+
+.text-top {
+    margin-top: 20px;
 }
 </style>
 <div class="container-fluid">
     <div class="row justify-content-space-between">
         @include('layouts.complements.event.sidebar')
-        <div class="container-day">
-            <h1 class="text-center">Día: {{ $day }}</h1>
-        </div>
-        @foreach ($events as $event)
-
-        <div class="container-drag">
-            <div class="draggable-container" draggable="true">
-                <input type="checkbox" class="checkbox">
-                <form action="{{ route('events.delete', $event->id) }}" method="POST" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Eliminar</button>
-                </form>
-                <form action="{{ route('events.update', $event->id) }}" method="POST" style="display: inline;">
+        <div class="container mt-4">
+            <div class="container container-day">
+                <h1 class="text-center text-top">Día: {{ $day }}</h1>
+            </div>
+            @foreach ($events as $event)
+            <div class="card" draggable="true" id="{{ $event->id }}">
+                <form action="{{ route('events.update', $event->id) }}" method="POST">
                     @csrf
                     @method('PUT')
+                    <input type="checkbox" name="completed">
                     <input type="text" name="title" value="{{ $event->title }}">
                     <input type="text" name="description" value="{{ $event->description }}">
                     <input type="date" name="finish_date" value="{{ $event->finish_date }}">
                     <input type="submit" value="Actualizar">
                 </form>
-
-                {{-- <label class="label">{{ $event->title }}</label> --}}
+                <form action="{{ route('events.delete', $event->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Eliminar</button>
+                </form>
             </div>
+            @endforeach
         </div>
-        @endforeach
-
-
     </div>
 </div>
 <script>
-var draggableContainers = document.querySelectorAll('.draggable-container');
+var draggableCards = document.querySelectorAll('.card');
 
-draggableContainers.forEach(function(container) {
-    container.addEventListener('dragstart', function(event) {
+draggableCards.forEach(function(card) {
+    card.addEventListener('dragstart', function(event) {
         event.dataTransfer.setData('text/plain', event.target.id);
         event.target.style.opacity = '0.4';
     });
 
-    container.addEventListener('dragend', function(event) {
+    card.addEventListener('dragend', function(event) {
         event.target.style.opacity = '1';
+    });
+
+    card.addEventListener('dragover', function(event) {
+        event.preventDefault();
+    });
+
+    card.addEventListener('drop', function(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData('text/plain');
+        var sourceCard = document.getElementById(data);
+        var targetCard = event.target.closest('.card');
+        var container = targetCard.parentNode;
+        container.insertBefore(sourceCard, targetCard);
     });
 });
 </script>
 
-
-
 @endsection
-

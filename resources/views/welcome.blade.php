@@ -18,6 +18,21 @@
 <section class="second-container spacetitle">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-6 aligncenter alignright">
+                <img src="{{ asset('img/first-image.png') }}" alt="illustration" class="illustration">
+            </div>
+            <div class="col-6 aligncenter textcenter">
+                <p class="text textcenter">
+                    Por tan solo 9,99€ al mes podrás crear tantos calendarios como quieras y disfrutar de nuestro servicio premium
+                </p>
+                <a href="{{ route('contact') }}" class="btn btn-normal">Mejora tu plan de subscripción</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="second-container spacetitle">
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-6 aligncenter textcenter">
                 <p class="text textcenter">
                     Cumple con tus fechas límite y las de tu circulo cercano gracias 

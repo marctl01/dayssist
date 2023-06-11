@@ -18,19 +18,17 @@
                 <div>
                     Perteneces a estos grupos: 
                     @foreach ($groups as $group)
-                    <div>
-                        <p>{{ $group->name }}</p>
-                        <form action="{{ route('groups_miemb.delete', ['group' => $group->id, 'user' => auth()->user()->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Eliminar</button>
-                        </form>
-                    </div>
-                @endforeach
-                
+                        <div>
+                            <p>{{ $group->name }}</p>
+                            <form action="{{ route('groups_miemb.delete', ['group' => $group->id, 'user' => auth()->user()->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    @endforeach       
                 </div>
             </div>
-
         </div>
     </div>
 </div>

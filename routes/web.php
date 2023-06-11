@@ -32,17 +32,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('/adm_users/delete', [App\Http\Controllers\Admin\UserController::class,'delete'])->name('adm_users.delete');
 
         Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
-
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-=======
-        
->>>>>>> Stashed changes
-=======
-        
->>>>>>> Stashed changes
     });
 
 
