@@ -16,6 +16,7 @@ class Event extends Model
         'finish_date',
         'group_id',
         'creator_id',
+        'checked',
     ];
 
     public function group()

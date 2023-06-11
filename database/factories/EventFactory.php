@@ -26,6 +26,7 @@ class EventFactory extends Factory
             'finish_date' => $this->faker->dateTimeBetween('+2 months', '+4 months'),
             'group_id' => Group::all()->random()->id,
             'creator_id' => function () { return User::inRandomOrder()->first()->id; },
+            'checked' => $this->faker->boolean(),
         ];
     }
 

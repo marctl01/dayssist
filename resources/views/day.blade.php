@@ -48,7 +48,11 @@
                 <form action="{{ route('events.update', $event->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <input type="checkbox" name="completed">
+                    @if ($event->checked == true)
+                        <input type="checkbox" name="completed" checked>
+                    @else
+                        <input type="checkbox" name="completed">
+                    @endif
                     <input type="text" name="title" value="{{ $event->title }}">
                     <input type="text" name="description" value="{{ $event->description }}">
                     <input type="date" name="finish_date" value="{{ $event->finish_date }}">

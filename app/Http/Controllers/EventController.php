@@ -132,6 +132,12 @@ class EventController extends Controller
         $event->title = $request->input('title');
         $event->description = $request->input('description');
 
+        if($request->input('completed') == null){
+            $event->checked = false;
+        }else{
+            $event->checked = true;
+        }
+
         $finish_date = $request->input('finish_date');
         $event->finish_date = Carbon::createFromFormat('Y-m-d', $finish_date)->startOfDay();
 

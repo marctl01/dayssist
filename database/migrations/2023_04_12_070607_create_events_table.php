@@ -17,15 +17,16 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->dateTime('start_date');
             $table->dateTime('finish_date');
+            $table->boolean('checked')->default(false);
             $table->timestamps();
-            
+
             // Id del creador
             $table->string('creator_id');
 
             //Relacion con grupos
             $table->unsignedBigInteger('group_id');
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
-            
+
         });
     }
 

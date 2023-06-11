@@ -37,7 +37,7 @@ class UserController extends Controller
         $name = $request->input('name');
         $email = $request->input('email');
         $rol_id = $request->input('rol_id');
-        $grupo_id = $request->input('group_id');
+        // $grupo_id = $request->input('group_id');
 
         $user = User::findOrFail($id);
 
@@ -45,8 +45,8 @@ class UserController extends Controller
         $user->email = $email;
         $user->role_id = $rol_id;
 
-        if($grupo_id != 0 ) $user->groups()->sync([$grupo_id]);
-        else $user->groups = $grupo_id;
+        // if($grupo_id != 0 ) $user->groups()->sync([$grupo_id]);
+        // else $user->groups = $grupo_id;
 
         if ($user->save()) {
             return ['success', 'Usuario creado exitosamente.'];
