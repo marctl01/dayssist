@@ -78,6 +78,7 @@ class EventController extends Controller
     {
         $title = $request->input('title');
         $description = $request->input('description');
+        $finish_date = $request->input('finish_date');
 
 
         $request->validate([
@@ -86,7 +87,6 @@ class EventController extends Controller
         ]);
 
         $start_date = Carbon::now();
-        $finish_date = Carbon::now();
         $creator_id = Auth::id();
 
         $group_id = DB::table('group_user')

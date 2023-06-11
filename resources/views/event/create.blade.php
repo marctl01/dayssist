@@ -12,6 +12,9 @@
                 <input type="text" name="title" id="title">
                 <label for="description">Descripcion:</label>
                 <input type="text" name="description" id="description">
+                <label for="finish_date">Fecha de finalización:</label>
+                <input type="date" name="finish_date" id="finish_date">
+
 
                 <button type="submit" onclick="return confirm('¿Estás seguro de crear este evento?')">Crear evento</button>
             </form>
