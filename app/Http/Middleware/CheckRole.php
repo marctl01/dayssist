@@ -12,9 +12,12 @@ class CheckRole
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string  $role
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function handle(Request $request, Closure $next, String $role): Response
+    public function handle(Request $request, Closure $next, string $role): Response
     {
         if (Auth::check()) {
             $user = Auth::user();
@@ -26,3 +29,4 @@ class CheckRole
         abort(403, 'Acceso denegado.');
     }
 }
+

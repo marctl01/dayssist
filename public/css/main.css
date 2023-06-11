@@ -72,6 +72,7 @@ span.relative.z-0.inline-flex.shadow-sm.rounded-md{
 input.id {
     width: 35px;
 }
+<<<<<<< Updated upstream
 /* Fonts que se encuentran en public/fonts */
 
 @font-face {
@@ -394,10 +395,16 @@ body {
     padding: 10px;
     font-size: 20px;
 }
+=======
+>>>>>>> Stashed changes
 
 .fa-edit{
     color: black;
 }
+<<<<<<< Updated upstream
 .btn-dayssist{
+=======
+.btn{
+>>>>>>> Stashed changes
     background-color: #1AA9A8;
 }

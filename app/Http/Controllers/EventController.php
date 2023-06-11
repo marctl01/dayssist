@@ -17,9 +17,6 @@ class EventController extends Controller
      */
     public function index()
     {
-        //DEVOLVER VIEW DE DAY
-        // $events = Event::all();
-        // return view('user.useraction', compact('events'));
         return view('day');
     }
 
@@ -107,7 +104,6 @@ class EventController extends Controller
 
         return redirect()->back()->with('success', 'Datos guardados correctamente');
 
-
     }
 
     /**
@@ -141,7 +137,6 @@ class EventController extends Controller
 
         $event->save();
 
-        // return redirect()->route('playground')->with('success', 'Event updated successfully.');
         return redirect()->back()->with('success', 'Event updated successfully');
     }
 
@@ -182,7 +177,6 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $event->delete();
 
-        // return redirect()->route('playground')->with('success', 'Event deleted successfully.');
         return redirect()->back()->with('success', 'Event deleted successfully');
     }
 

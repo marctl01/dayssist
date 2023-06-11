@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 
 <style>
@@ -17,6 +16,31 @@
     </style>
 
 
+<style>
+    .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.draggable-container {
+    width: 200px;
+    height: 150px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f0f0f0;
+    cursor: move;
+}
+
+.checkbox {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-size: 16px;
+}
+</style>
 <div class="container-fluid">
     <div class="row justify-content-space-between">
         @include('layouts.complements.event.sidebar')
