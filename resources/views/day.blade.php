@@ -2,24 +2,21 @@
 @section('content')
 
 <style>
-    #datepicker {
-      width: 200px;
-      padding: 10px;
-      font-size: 16px;
-    }
+#datepicker {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+}
 
-    #datepicker-button {
-      margin-left: 10px;
-      padding: 8px 12px;
-      font-size: 14px;
-    }
-    </style>
+#datepicker-button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+}
 
-
-<style>
-    .container {
-    display: flex;
-    justify-content: space-between;
+.container {
+display: flex;
+justify-content: space-between;
 }
 
 .draggable-container {

@@ -21,7 +21,6 @@
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Rol</th>
-                        <th class="id">Grupo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -38,36 +37,12 @@
                                 <option value="3" @if($user->role->id == 3) selected @endif>Miembro</option>
                             </select>
                         </td>
-<<<<<<< Updated upstream
+
                         
-                        <td class="center id">
-                            <select name="group_id">
-                                <option value="0" @if ($user->groups->isEmpty()) selected @endif>Sin grupo</option>
-                                @foreach ($groups as $group)
-                                    <option value="{{ $group->id }}" @if ($user->groups->contains('id', $group->id)) selected @endif>{{ $group->name }}</option>
-                                @endforeach
-                            </select>
-                            
-                            {{-- @if(isset($user->groups->first()->id)) <input type="number" value="{{ $user->groups->first()->id }}" class="center" > 
-                            @else <input type="number" value="0" placeholder="Sin grupo" class="center">
-                            @endif --}}
-                        </td>
+
+                    
                         <td class="center">
                             <button onclick="update(this.parentNode.parentNode)" class="btn-dayssist">
-=======
-                        <td class="center">
-                            @if(isset($user->groups->first()->name)) <input type="text" value="{{ $user->groups->first()->name }}" class="center" > 
-                            @else <input type="text" value="0" placeholder="Sin grupo" class="center">
-                            @endif
-                        </td>
-                        <td class="center id">
-                            @if(isset($user->groups->first()->id)) <input type="text" value="{{ $user->groups->first()->id }}" class="center" > 
-                            @else <input type="text" value="0" placeholder="Sin grupo" class="center">
-                            @endif
-                        </td>
-                        <td class="center">
-                            <button onclick="" class="btn-dayssist">
->>>>>>> Stashed changes
                                 <i class="fas fa-edit"></i>
                             </button>
                         </td>
@@ -75,7 +50,6 @@
                     @endforeach
                 </tbody>
             </table>
-<<<<<<< Updated upstream
             <meta name="csrf-token" content="{{ csrf_token() }}">
             <script>
                 function update(d) {
@@ -85,13 +59,13 @@
                     var name = td[1].children[0].value;
                     var email = td[2].children[0].value;
                     var rol = td[3].children[0].value;
-                    var group = td[4].children[0].value;
+                    // var group = td[4].children[0].value;
 
                     console.log(id);
                     console.log(name);
                     console.log(email);
                     console.log(rol);
-                    console.log(group);
+                    // console.log(group);
 
                     // Obtén los datos del formulario en un objeto formData
                     var formData = new FormData();
@@ -99,7 +73,7 @@
                     formData.append('name', name);
                     formData.append('email', email);
                     formData.append('rol_id', rol);
-                    formData.append('group_id', group);
+                    // formData.append('group_id', group);
 
                     var formDataObject = Object.fromEntries(formData);
                     var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -118,11 +92,6 @@
                         console.log(response);
                     }
                     });
-=======
-            <script>
-                function update(data) {
-                    
->>>>>>> Stashed changes
                     
                 }
             </script>

@@ -31,6 +31,9 @@
                             <a class="nav-link headerlink" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
+                    <div class="routes-list">
+                        <a class="nav-link headerlink" href="{{ route('profile.edit') }}">Profile</a>
+                    </div>
                     <div class="routes-list ms-auto">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();

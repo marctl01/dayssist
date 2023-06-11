@@ -34,7 +34,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/adm_events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('adm_events');
 
 
+<<<<<<< Updated upstream
 
+=======
+        
+>>>>>>> Stashed changes
     });
 
 
