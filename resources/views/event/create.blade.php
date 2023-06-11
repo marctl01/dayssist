@@ -20,6 +20,8 @@
                     <input type="text" name="title" id="title"><br><br>
                     <label for="description">Descripcion</label><br>
                     <input type="text" name="description" id="description"><br><br>
+                    <label for="finish_date">Fecha de finalización:</label><br>
+                    <input type="date" name="finish_date" id="finish_date"><br><br>
 
                     <button type="submit">Crear evento</button>
                 </form>

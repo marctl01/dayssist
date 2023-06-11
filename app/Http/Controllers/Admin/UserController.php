@@ -24,8 +24,8 @@ class UserController extends Controller
     {
         $nombreABuscar = $request->input('search');
         $groups = Group::all();
-        
-        
+
+
         $users = User::where('name', 'like', "%$nombreABuscar%")
                 ->paginate(20);
         return view('admin.user' , compact('users','groups'));
@@ -37,16 +37,16 @@ class UserController extends Controller
         $name = $request->input('name');
         $email = $request->input('email');
         $rol_id = $request->input('rol_id');
-        // $grupo_id = $request->input('group_id');
+        $grupo_id = $request->input('group_id');
 
         $user = User::findOrFail($id);
 
         $user->name = $name;
         $user->email = $email;
         $user->role_id = $rol_id;
-        
-        // if($grupo_id != 0 ) $user->groups()->sync([$grupo_id]);
-        // else $user->groups = $grupo_id;
+
+        if($grupo_id != 0 ) $user->groups()->sync([$grupo_id]);
+        else $user->groups = $grupo_id;
 
         if ($user->save()) {
             return ['success', 'Usuario creado exitosamente.'];
@@ -58,7 +58,7 @@ class UserController extends Controller
     public function update_searcher(Request $request)
     {
         $nombreABuscar = $request->input('search');
-        
+
         $users = User::where('name', 'like', "%$nombreABuscar%")
                 ->paginate(20);
         return view('admin.User.update' , compact('users'));
