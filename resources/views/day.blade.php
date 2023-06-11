@@ -1,6 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+    #datepicker {
+      width: 200px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    #datepicker-button {
+      margin-left: 10px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+    </style>
+
+
 <div class="container-fluid">
     <div class="row justify-content-space-between">
         @include('layouts.complements.event.sidebar')
@@ -12,7 +28,21 @@
         <div class="container-drag">
             <div class="draggable-container" draggable="true">
                 <input type="checkbox" class="checkbox">
-                <label class="label">{{ $event->title }}</label>
+                <form action="{{ route('events.delete', $event->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Eliminar</button>
+                </form>
+                <form action="{{ route('events.update', $event->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('PUT')
+                    <input type="text" name="title" value="{{ $event->title }}">
+                    <input type="text" name="description" value="{{ $event->description }}">
+                    <input type="date" name="finish_date" value="{{ $event->finish_date }}">
+                    <input type="submit" value="Actualizar">
+                </form>
+
+                {{-- <label class="label">{{ $event->title }}</label> --}}
             </div>
         </div>
         @endforeach
@@ -34,5 +64,8 @@ draggableContainers.forEach(function(container) {
     });
 });
 </script>
+
+
+
 @endsection
 

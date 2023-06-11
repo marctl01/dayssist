@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Event;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class EventController extends Controller
@@ -53,10 +54,21 @@ class EventController extends Controller
         $monthNum = $monthMappings[$month];
         $day = $day;
 
+        $userId = Auth::id();
+
+        $groupId = DB::table('group_user')
+            ->where('user_id', $userId)
+            ->value('group_id');
+
         $events = DB::table('events')
-            ->whereMonth('start_date', '=', Carbon::parse($monthNum)->month)
-            ->whereDay('start_date', '=', $day)
+            ->where('group_id', $groupId)
+            ->whereMonth('finish_date', '=', Carbon::parse($monthNum)->month)
+            ->whereDay('finish_date', '=', $day)
             ->get();
+
+        foreach ($events as $event) {
+            $event->finish_date = Carbon::parse($event->finish_date)->format('Y-m-d');
+        }
 
         return view('day', compact('events', 'month', 'day'));
 
@@ -67,20 +79,35 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //OJO MEJORAR EL VALIDATE, SOLO SALTA ERROR SI DATE ESTA MAL (mal formato de date en bbdd)
+        $title = $request->input('title');
+        $description = $request->input('description');
+
+
         $request->validate([
             'title' => 'required',
-            'start_date' => 'required|date',
-            'finish_date' => 'required|date',
-            'creator_id' => 'required',
-            'group_id' => 'required',
+
         ]);
 
-        Event::create($request->all());
+        $start_date = Carbon::now();
+        $finish_date = Carbon::now();
+        $creator_id = Auth::id();
+
+        $group_id = DB::table('group_user')
+            ->where('user_id', $creator_id)
+            ->value('group_id');
+
+        Event::create([
+            'title' => $title,
+            'description' => $description,
+            'start_date' => $start_date,
+            'finish_date' => $finish_date,
+            'creator_id' => $creator_id,
+            'group_id' => $group_id,
+        ]);
 
         return redirect()->back()->with('success', 'Datos guardados correctamente');
 
-        // return redirect()->route('event.showall')->with('success', 'Event created successfully.');
+
     }
 
     /**
@@ -100,27 +127,57 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $id)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'start_date' => 'required',
-            'finish_date' => 'required',
-            'creator_id' => 'required',
-            'group_id' => 'required',
-        ]);
+
 
         $event = Event::findOrFail($id);
-        $event->update($request->all());
+        // $event->update($request->all());
+        $event->title = $request->input('title');
+        $event->description = $request->input('description');
+
+        $finish_date = $request->input('finish_date');
+        $event->finish_date = Carbon::createFromFormat('Y-m-d', $finish_date)->startOfDay();
+
+        $event->save();
 
         // return redirect()->route('playground')->with('success', 'Event updated successfully.');
         return redirect()->back()->with('success', 'Event updated successfully');
     }
 
+    public function showDayEventDelete($month, $day)
+    {
+        $monthMappings = [
+            'Enero' => 'January',
+            'Febrero' => 'February',
+            'Marzo' => 'March',
+            'Abril' => 'April',
+            'Mayo' => 'May',
+            'Junio' => 'June',
+            'Julio' => 'July',
+            'Agosto' => 'August',
+            'Septiembre' => 'September',
+            'Octubre' => 'October',
+            'Noviembre' => 'November',
+            'Diciembre' => 'December',
+        ];
+
+        $monthNum = $monthMappings[$month];
+        $day = $day;
+
+        $events = DB::table('events')
+            ->whereMonth('start_date', '=', Carbon::parse($monthNum)->month)
+            ->whereDay('start_date', '=', $day)
+            ->get();
+
+        return view('event.delete', compact('events', 'month', 'day'));
+
+    }
+
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(Event $id)
+    public function delete($id)
     {
         $event = Event::findOrFail($id);
         $event->delete();
@@ -128,4 +185,6 @@ class EventController extends Controller
         // return redirect()->route('playground')->with('success', 'Event deleted successfully.');
         return redirect()->back()->with('success', 'Event deleted successfully');
     }
+
+
 }

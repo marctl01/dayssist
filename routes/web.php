@@ -54,6 +54,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/events/create', [App\Http\Controllers\EventController::class, 'store'])->name('events.create');
     Route::get('/events/update', [App\Http\Controllers\EventController::class, 'update_form'])->name('events.update_form');
     Route::patch('/events/update', [App\Http\Controllers\EventController::class, 'update'])->name('events.update');
+    // Route::get('/events/delete/{month}/{day}', [App\Http\Controllers\EventController::class, 'showDayEventDelete'])->name('events.delete');
+    // Route::post('/events/delete', [App\Http\Controllers\EventController::class, 'delete'])->name('events.delete');
+    Route::delete('/events/{id}', [App\Http\Controllers\EventController::class, 'delete'])->name('events.delete');
+    Route::put('/events/{id}', [App\Http\Controllers\EventController::class, 'update'])->name('events.update');
 
 });
 
