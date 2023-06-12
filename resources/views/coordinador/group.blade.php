@@ -43,10 +43,10 @@
                         <input type="submit" value="Acceder"><br><br>
                     </form>
                     <div class="container container-perteneces">
-                        Perteneces a estos grupos: 
+                        Perteneces a estos grupos:
                         @foreach ($groups as $group)
                         <div>
-                            <p>{{ $group->name }}</p>
+                            <p>{{ $group->id}} - {{ $group->name }}</p>
                             <form action="{{ route('groups_coord.delete', ['group' => $group->id, 'user' => auth()->user()->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')

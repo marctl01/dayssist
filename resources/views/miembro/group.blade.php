@@ -16,17 +16,17 @@
                 </form>
 
                 <div>
-                    Perteneces a estos grupos: 
+                    Perteneces a estos grupos:
                     @foreach ($groups as $group)
                         <div>
-                            <p>{{ $group->name }}</p>
+                            <p>{{ $group->id}} - {{ $group->name }}</p>
                             <form action="{{ route('groups_miemb.delete', ['group' => $group->id, 'user' => auth()->user()->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Eliminar</button>
                             </form>
                         </div>
-                    @endforeach       
+                    @endforeach
                 </div>
             </div>
         </div>
