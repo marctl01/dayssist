@@ -35,6 +35,10 @@
 .text-top {
     margin-top: 20px;
 }
+.sidebar {
+    height: 100vh !important;
+}
+
 </style>
 <div class="container-fluid">
     <div class="row justify-content-space-between">

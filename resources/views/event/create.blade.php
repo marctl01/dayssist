@@ -5,6 +5,9 @@
     .container-formulario-evento{
         margin-top: -50px;
     }
+    .sidebar{
+        height: 100vh !important;
+    }
 </style>
 <div class="container-fluid">
     <div class="row justify-content-space-between">

@@ -1,4 +1,4 @@
-<div class="sidebar" style="display: flex; flex-direction: column; align-items: flex-start;">
+<div class="sidebar" style="display: flex; flex-direction: column; align-items: flex-start; height: 100vh !important">
     <a href="/calendar" class="sidebar-link" style="margin-bottom: 5px;">Mis calendarios</a>
 
     @if(auth()->user()->role->name == 'Coordinador')

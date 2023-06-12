@@ -15,13 +15,10 @@
         </div>
     </div>
 </section>
-<section class="second-container spacetitle">
+<section class="third-container spacetitle">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6 aligncenter alignright">
-                <img src="{{ asset('img/first-image.png') }}" alt="illustration" class="illustration">
-            </div>
-            <div class="col-6 aligncenter textcenter">
+            <div class="col-12 aligncenter textcenter">
                 <p class="text textcenter">
                     Por tan solo 9,99€ al mes podrás crear tantos calendarios como quieras y disfrutar de nuestro servicio premium
                 </p>

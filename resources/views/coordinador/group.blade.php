@@ -35,7 +35,7 @@
                 <div class="container container-add">
                     <form method="POST" action="{{ route('groups_coord.add_group') }}">
                         @csrf
-                        <h4>Añadir Grupo</h4>
+                        <h4>Añadirme a un Grupo</h4>
                         <label>Identificador Grupo </label><br>
                         <input type="text" name="group_id" id="group_id"><br><br>
                         <label>Password </label><br>
@@ -45,19 +45,18 @@
                     <div class="container container-perteneces">
                         Perteneces a estos grupos:
                         @foreach ($groups as $group)
-                        <div>
+                        <div class="container container-group">
                             <p>{{ $group->id}} - {{ $group->name }}</p>
-                            <form action="{{ route('groups_coord.delete', ['group' => $group->id, 'user' => auth()->user()->id]) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Eliminar</button>
-                            </form>
                         </div>
+                        <form action="{{ route('groups_coord.delete', ['group' => $group->id, 'user' => auth()->user()->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Eliminar</button>
+                        </form>
                     @endforeach
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

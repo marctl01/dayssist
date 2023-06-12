@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .sidebar{
+        height: 100vh !important;
+    }
+</style>
 <div class="container-fluid">
     <div class="row justify-content-space-between">
         @include('layouts.complements.event.sidebar')
