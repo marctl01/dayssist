@@ -1,6 +1,6 @@
 <style>
     .sidebar {
-    height: 540px !important;
+    height: 650px !important;
 }
 </style>
 <div class="sidebar" style="display: flex; flex-direction: column; align-items: flex-start;">
