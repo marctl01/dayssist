@@ -22,7 +22,9 @@ class EventController extends Controller
 
     public function create_form()
     {
-        return view('event.create');
+        // $user = auth()->user()->groups;
+        $groups = auth()->user()->groups;
+        return view('event.create', compact('groups'));
     }
 
     public function showall()
@@ -53,14 +55,28 @@ class EventController extends Controller
 
         $userId = Auth::id();
 
-        $groupId = DB::table('group_user')
+        // $groupId = DB::table('group_user')
+        //     ->where('user_id', $userId)
+        //     ->value('group_id');
+
+        $groupIds = DB::table('group_user')
             ->where('user_id', $userId)
-            ->value('group_id');
+            ->pluck('group_id')
+            ->all();
+
+
+        // $events = DB::table('events')
+        //     ->whereIn('group_id', $groupIds)
+        //     ->whereMonth('finish_date', '=', Carbon::parse($monthNum)->month)
+        //     ->whereDay('finish_date', '=', $day)
+        //     ->get();
 
         $events = DB::table('events')
-            ->where('group_id', $groupId)
-            ->whereMonth('finish_date', '=', Carbon::parse($monthNum)->month)
-            ->whereDay('finish_date', '=', $day)
+            ->join('groups', 'events.group_id', '=', 'groups.id')
+            ->whereIn('events.group_id', $groupIds)
+            ->whereMonth('events.finish_date', '=', Carbon::parse($monthNum)->month)
+            ->whereDay('events.finish_date', '=', $day)
+            ->select('events.*', 'groups.name as group_name')
             ->get();
 
         foreach ($events as $event) {
@@ -79,6 +95,7 @@ class EventController extends Controller
         $title = $request->input('title');
         $description = $request->input('description');
         $finish_date = $request->input('finish_date');
+        $group_id = $request->input('group_id');
 
 
         $request->validate([
@@ -89,9 +106,10 @@ class EventController extends Controller
         $start_date = Carbon::now();
         $creator_id = Auth::id();
 
-        $group_id = DB::table('group_user')
-            ->where('user_id', $creator_id)
-            ->value('group_id');
+        // Comprobar si algún valor es nulo
+        if (empty($title) || empty($finish_date) || empty($group_id)) {
+            return redirect()->back()->with('error', 'Todos los campos son obligatorios');
+        }
 
         Event::create([
             'title' => $title,

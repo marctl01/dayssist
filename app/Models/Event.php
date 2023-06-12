@@ -21,6 +21,6 @@ class Event extends Model
 
     public function group()
     {
-        return $this->belongsTo(Group::class, 'id_group');
+        return $this->belongsTo(Group::class, 'group_id');
     }
 }

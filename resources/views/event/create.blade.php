@@ -25,6 +25,11 @@
                     <input type="text" name="description" id="description"><br><br>
                     <label for="finish_date">Fecha de finalización:</label><br>
                     <input type="date" name="finish_date" id="finish_date"><br><br>
+                    <select name="group_id">
+                        @foreach ($groups as $group)
+                            <option value="{{ $group->id }}">{{ $group->name }}</option>
+                        @endforeach
+                    </select>
 
                     <button type="submit">Crear evento</button>
                 </form>

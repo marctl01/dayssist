@@ -3,7 +3,6 @@
 
     @if(auth()->user()->role->name == 'Coordinador')
         <a href="/groups_coord" class="sidebar-link" style="margin-bottom: 5px;">Mis Grupos</a>
-        <a href="/groups_coord" class="sidebar-link" style="margin-bottom: 5px;">Crear nuevo grupo</a>
         <a href="/events/create" class="sidebar-link" style="margin-bottom: 5px;">Crear evento</a>
     @endif
 

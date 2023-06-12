@@ -64,6 +64,11 @@ class GroupController extends Controller
         $groupPasswordConfirm = $request->input('password_confirm');
         $user = auth()->user();
 
+        // Comprobar si algún valor es nulo
+        if (empty($groupName) || empty($groupPassword) || empty($groupPasswordConfirm)) {
+            return redirect()->back()->with('error', 'Todos los campos son obligatorios');
+        }
+
         // Verificar si el grupo ya existe
         $existingGroup = Group::where('name', $groupName)->first();
 

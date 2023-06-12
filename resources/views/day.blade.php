@@ -38,28 +38,62 @@
 .sidebar {
     height: 100vh !important;
 }
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert p {
+    margin: 0;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
 
 </style>
 <div class="container-fluid">
     <div class="row justify-content-space-between">
         @include('layouts.complements.event.sidebar')
         <div class="container mt-4">
+            @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
             <div class="container container-day">
                 <h1 class="text-center text-top">Día: {{ $day }}</h1>
             </div>
             @foreach ($events as $event)
             <div class="card" draggable="true" id="{{ $event->id }}">
+                <span>{{ $event->group_id }}. {{ $event->group_name }}</span>
                 <form action="{{ route('events.update', $event->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     @if ($event->checked == true)
                         <input type="checkbox" name="completed" checked>
+                        <span>Hecho</span>
                     @else
                         <input type="checkbox" name="completed">
+                        <span>Hecho</span>
                     @endif
                     <input type="text" name="title" value="{{ $event->title }}">
                     <input type="text" name="description" value="{{ $event->description }}">
                     <input type="date" name="finish_date" value="{{ $event->finish_date }}">
+
                     <input type="submit" value="Actualizar">
                 </form>
                 <form action="{{ route('events.delete', $event->id) }}" method="POST">

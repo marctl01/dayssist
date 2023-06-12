@@ -4,7 +4,7 @@
         <div class="col-12 container_contact">
           <div class="row align-left">
             <div class="col-9 p-0 contact">
-              <a href="{{ route('contact') }}" class="footerlink">Contact</a>
+              <a href="{{ route('contact') }}" class="footerlink">Contacto</a>
               <ul class="link_list">
                 <li>
                   <a href="https://wa.me/34932760467" class="footerlink" target="_blank">
@@ -34,4 +34,3 @@
       </div>
     </div>
   </footer>
-  
