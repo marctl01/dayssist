@@ -106,9 +106,10 @@ class EventController extends Controller
         $start_date = Carbon::now();
         $creator_id = Auth::id();
 
-        // $group_id = DB::table('group_user')
-        //     ->where('user_id', $creator_id)
-        //     ->value('group_id');
+        // Comprobar si algún valor es nulo
+        if (empty($title) || empty($finish_date) || empty($group_id)) {
+            return redirect()->back()->with('error', 'Todos los campos son obligatorios');
+        }
 
         Event::create([
             'title' => $title,

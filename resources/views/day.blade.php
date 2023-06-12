@@ -35,11 +35,43 @@
 .text-top {
     margin-top: 20px;
 }
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert p {
+    margin: 0;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
 </style>
 <div class="container-fluid">
     <div class="row justify-content-space-between">
         @include('layouts.complements.event.sidebar')
         <div class="container mt-4">
+            @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
             <div class="container container-day">
                 <h1 class="text-center text-top">Día: {{ $day }}</h1>
             </div>
@@ -59,6 +91,7 @@
                     <input type="text" name="title" value="{{ $event->title }}">
                     <input type="text" name="description" value="{{ $event->description }}">
                     <input type="date" name="finish_date" value="{{ $event->finish_date }}">
+
                     <input type="submit" value="Actualizar">
                 </form>
                 <form action="{{ route('events.delete', $event->id) }}" method="POST">
