@@ -4,12 +4,12 @@
     <div class="container-title">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="contact-title">Contact</h1>
+                <h1 class="contact-title">Contacto</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <p class="contact-subtitle">Would you like to contact our team?</p>
+                <p class="contact-subtitle">¿Quieres ponerte en contacto con nosotros?</p>
             </div>
         </div>
     </div>
@@ -19,10 +19,10 @@
         <div class="row">
             <div class="col-md-6">
               <form method="POST" class="contact-form">
-                <input type="text" name="name" placeholder="Name" class="form-control inputcontact">
+                <input type="text" name="name" placeholder="Nombre" class="form-control inputcontact">
                 <input type="email" name="email" placeholder="Email" class="form-control inputcontact">
-                <textarea name="message" placeholder="Message" class="form-control inputcontact" rows="5"></textarea>
-                <button type="submit" class="btn btn-send">Send</button>
+                <textarea name="message" placeholder="Mensaje" class="form-control inputcontact" rows="5"></textarea>
+                <button type="submit" class="btn btn-send">Enviar</button>
               </form>
             </div>
         </div>
@@ -32,10 +32,9 @@
     <div class="row">
         <div class="col-md-6 contactpadding">
             <div class="contact-info">
-                <h2 class="contact-info-title">Contact Info</h2>
-                <p class="contact-info-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nunc nunc tincidunt elit, vitae luctus nunc lorem eget mauris. Sed euismod, nisl nec ultricies ultricies, nunc nunc tincidunt elit, vitae luctus nunc lorem eget mauris.</p>
-                <p class="contact-info-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nunc nunc tincidunt elit, vitae luctus nunc lorem eget mauris. Sed euismod, nisl nec ultricies ultricies, nunc nunc tincidunt elit, vitae luctus nunc lorem eget mauris.</p>
-                <p class="contact-info-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies ultricies, nunc nunc tincidunt elit, vitae luctus nunc lorem eget mauris. Sed euismod, nisl nec ultricies ultricies, nunc nunc tincidunt elit, vitae luctus nunc lorem eget mauris.</p>
+                <h2 class="contact-info-title">¿Quienes somos?</h2>
+                <p class="contact-info-text">Somos el equipo de Dayssist una empresa comprometida en brindar soluciones prácticas y efectivas a través de nuestra página web desarrollada con Laravel. Nuestro objetivo principal es ayudar a las personas a gestionar de manera eficiente su día a día y optimizar su tiempo.</p>
+                <p class="contact-info-text">Creemos en la importancia de la organización y la planificación para llevar una vida equilibrada y productiva. Es por eso que nos enorgullece brindar una herramienta intuitiva y fácil de usar que permita a nuestros usuarios gestionar sus tareas diarias de manera eficiente, priorizar sus actividades y alcanzar sus metas personales y profesionales.</p>
             </div>
         </div>
         <div class="col-md-6 contactpadding">
@@ -44,4 +43,3 @@
     </div>
 </div>
 @endsection
-           

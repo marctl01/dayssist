@@ -45,13 +45,16 @@
             </div>
             @foreach ($events as $event)
             <div class="card" draggable="true" id="{{ $event->id }}">
+                <span>{{ $event->group_id }}. {{ $event->group_name }}</span>
                 <form action="{{ route('events.update', $event->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     @if ($event->checked == true)
                         <input type="checkbox" name="completed" checked>
+                        <span>Hecho</span>
                     @else
                         <input type="checkbox" name="completed">
+                        <span>Hecho</span>
                     @endif
                     <input type="text" name="title" value="{{ $event->title }}">
                     <input type="text" name="description" value="{{ $event->description }}">
